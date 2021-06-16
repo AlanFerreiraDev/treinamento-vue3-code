@@ -78,10 +78,13 @@
 </template>
 
 <script>
+/* eslint-disabled */
 import { reactive } from '@vue/reactivity'
 import useModal from '../../hooks/useModal'
 import { useField } from 'vee-validate'
-import { validateEmptyAndLength3, validateEmptyAndEmail } from '../../utils/validators'
+import * as yup from 'yup'
+// import { validateEmptyAndLength3, validateEmptyAndEmail } from '../../utils/validators'
+import { validateEmptyAndLength3 } from '../../utils/validators'
 
 export default {
 
@@ -90,10 +93,19 @@ export default {
 
     // * Validação dos campos com vee-validate
     // * ele retorna value e errorMessage da vee-validate, então eu renomeio para fazer o assign no meu modal abaixo
+    // const {
+    //   value: emailValue,
+    //   errorMessage: emailErrorMessage
+    // } = useField('email', validateEmptyAndEmail)
+
+    // const userSchema = yup.object().shape({
+    //   email: yup.string().email().required(),
+    // });
+
     const {
-      value: emailValue,
-      errorMessage: emailErrorMessage
-    } = useField('email', validateEmptyAndEmail)
+      value,
+      errorMessage
+    } = useField('email', yup.string().email('Digite um e-mail válido').required('Este campo é Obrigatório').min(8, 'No minímo 15 caracteres'))
 
     const {
       value: passwordValue,
@@ -104,8 +116,8 @@ export default {
       hasErrors: false,
       isLoading: false,
       email: {
-        value: emailValue,
-        errorMessage: emailErrorMessage
+        value,
+        errorMessage
       },
       password: {
         value: passwordValue,
