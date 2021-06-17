@@ -21,12 +21,18 @@ const routes = [
   {
     path: "/feedbacks",
     name: "Feedbacks",
-    component: Feedbacks
+    component: Feedbacks,
+    meta: {
+      hasAuth: true
+    }
   },
   {
     path: "/credentials",
     name: "Credentials",
-    component: Credentials
+    component: Credentials,
+    meta: {
+      hasAuth: true
+    }
   },
   {
     // Rota 404, o path é uma regex da própria documentção do routes do VUE

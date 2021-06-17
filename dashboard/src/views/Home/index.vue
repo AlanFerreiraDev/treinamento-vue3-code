@@ -1,11 +1,11 @@
 // * No Vue 3, voce não precisa usar um elemento apenas no root da aplicação, ou seja, vc pode colocar mais de um elemento seguido
 <template>
 <!-- eslint-disable  -->
-  <CustomHeader
+  <custom-header
     @create-account="handleAccountCreate"
     @login="handleLogin"
   />
-  <Contact />
+  <contact />
   <!-- A classe está sendo renderizada em cima do tailwind, no arquivo tailwind.config.js vc pode ver essas configurações -->
   <div class="flex justify-center py-10 bg-brand-gray">
     <p class="font-medium text-center text-gray-800">feedbacker © 2021</p>
@@ -46,7 +46,7 @@ export default {
 
     function handleAccountCreate() {
       modal.open({
-        component: 'ModalCreateAccount'
+        component: 'ModalAccountCreate'
       })
 
     }

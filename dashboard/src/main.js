@@ -1,13 +1,19 @@
 /* eslint no-use-before-define: 0 */
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+/* eslint-disable */
+// * Tudo que é global fazemos no main.js, pq ficará disponivel para toda a aplicação
 
-import 'animate.css'
-import '@/assets/css/tailwind.css'
-import '@/assets/css/fonts.css'
+import { createApp } from "vue";
+import Toast, { POSITION } from "vue-toastification";
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+import "animate.css";
+import "@/assets/css/tailwind.css";
+import "@/assets/css/fonts.css";
+import "vue-toastification/dist/index.css";
+
+const app = createApp(App);
+app.use(router);
+app.use(Toast, { position: POSITION.BOTTOM_RIGHT });
+app.mount("#app");
